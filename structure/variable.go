@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 )
 
@@ -28,6 +29,15 @@ func main() {
 	point()
 	niltest()
 
+	var server httpServer
+	http.Handle("/", server)
+}
+
+func (server httpServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte(r.URL.Path))
+}
+
+type httpServer struct {
 }
 
 func point() {
