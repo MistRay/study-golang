@@ -7,7 +7,7 @@ import (
 )
 
 func Greet(writer io.Writer, name string) {
-	fmt.Fprintf(writer, "hello, %s", name)
+	fmt.Fprintf(writer, "hello,%s", name)
 }
 
 func MyGreeterHandler(w http.ResponseWriter, r *http.Request) {
